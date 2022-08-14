@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webservice
+  labels:
+    name: webservice
+  annotations:
+    #cert-manager.io/issuer: r00t-mdoktor-dev-issuer 
+    cert-manager.io/private-key-secret-name: cool-webservice.r00t.mdoktor.dev
+spec:
+  tls:
+    - hosts:
+      - cool-webservice.r00t.mdoktor.dev
+      secretName: cool-webservice-r00t-mdoktor-dev
+  rules:
+  - host: cool-webservice.r00t.mdoktor.dev
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: cool-webservice
+            port: 
+              number: 8080
+

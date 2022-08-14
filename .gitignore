@@ -1,0 +1,6 @@
+users/
+ansible/
+helm/
+jellyfin/
+paperless-ngx/
+vaultwarden/

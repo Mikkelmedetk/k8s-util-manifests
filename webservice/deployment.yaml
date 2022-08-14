@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cool-webservice
+spec:
+  selector:
+    matchLabels:
+      app: cool-webservice
+  template:
+    metadata:
+      labels:
+        app: cool-webservice
+    spec:
+      containers:
+      - name: cool-webservice
+        image: mikkelmedetk/learn-docker:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
